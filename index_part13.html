@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+    .vue{ background: red}
+    .react{background: blue}
+    .tw{color: white}
+    .item{ width: 200px;height: 60px;border-radius: 10px;border-color: blue;margin: 10px}
+  </style>
+
+</head>
+<body>
+
+
+<div id="app">
+
+<!--    این روش تگ های html رو نشون میده و رندر نمیکنه-->
+<div>
+    {{htmlText}}
+</div>
+
+
+<!--    این دایرکتیو این مشکل رو حل میکنه اما در برابر حملات xss آسیب پذیره-->
+    <div v-html="htmlText"></div>
+
+
+<!--    برای نمایش کل کد-->
+<!--    <p v-pre>-->
+<!--        {{hi ali}}-->
+<!--    </p>-->
+
+
+</div>
+
+
+
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+
+  const app=Vue.createApp({
+
+    data: ()=>({
+        htmlText:'<h2>titleees</h2>'
+    }),
+    methods:{}
+
+  });
+
+
+  const vm=app.mount('#app');
+
+</script>
+
+</body>
+</html>

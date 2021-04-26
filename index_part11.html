@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+    .vue{ background: red}
+    .react{background: blue}
+    .tw{color: white}
+    .item{ width: 200px;height: 60px;border-radius: 10px;border-color: blue;margin: 10px}
+  </style>
+
+</head>
+<body>
+
+
+<div id="app">
+
+
+<!--    <ul>-->
+<!--        <li>{{frameworks[0]}}</li>-->
+<!--        <li>{{frameworks[1]}}</li>-->
+<!--        <li>{{frameworks[2]}}</li>-->
+<!--    </ul>-->
+
+
+
+<!--    نمایش لیست از روی آرایه-->
+    <ul>
+<!--        <li v-for="framework in frameworks">{{framework}}</li>-->
+
+<!--        وقتی v-for استفاده می کنیم، بهتره یه مقدار unique هم برای key در نظر بگیریم-->
+<!--        <li class="item" v-for="framework in frameworks" :key="framework">{{framework}}</li>-->
+
+<!--        اگه بخوایم index رو هم نمایش بده-->
+        <li class="item" v-for="(framework,index) in frameworks" :key="framework">{{index}} - {{framework}}</li>
+    </ul>
+
+
+
+    <!--    نمایش لیست از روی آبجکت-->
+    <ul>
+        <li v-for="item in user" >{{item}}</li>
+
+
+<!--        توی ابجکت ها هم میشه key رو گرفت و هم index رو-->
+        <li v-for="(item , key, index) in user" :key="item">
+            {{index}}-{{key}}-{{item}}
+        </li>
+
+
+<!--        برای اینکه زیاد شلوغ نشه اینجوری هم میشه نوشت-->
+        <li v-for="(item , key, index) in user" :key="item">
+            {{ `${index}-${key}-${item}` }}
+        </li>
+    </ul>
+
+
+</div>
+
+
+
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+
+  const app=Vue.createApp({
+
+    data: ()=>({
+        frameworks:[
+            'vue.js','angular','svelete','laravel','jquery'
+        ],
+        user:{
+            name:'ali',
+            age:'30',
+            edu:'doc',
+        }
+    }),
+    methods:{}
+
+  });
+
+
+  const vm=app.mount('#app');
+
+</script>
+
+</body>
+</html>

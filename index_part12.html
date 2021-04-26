@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+    .vue{ background: red}
+    .react{background: blue}
+    .tw{color: white}
+    .item{ width: 200px;height: 60px;border-radius: 10px;border-color: blue;margin: 10px}
+  </style>
+
+</head>
+<body>
+
+
+<div id="app">
+
+
+<!--    v-if و v-for نباید باهم در یک تگ html استفاده شوند و باید اونها رو جدا کرد به دوتا-->
+    <ul>
+        <template class="item" v-for="(framework,index) in frameworks" :key="framework">
+            <li v-if="framework!=='vue'">{{index}} - {{framework}}</li>
+        </template>
+    </ul>
+
+</div>
+
+
+
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+
+  const app=Vue.createApp({
+
+    data: ()=>({
+        frameworks:[
+            'vue.js','angular','svelete','laravel','jquery'
+        ],
+        user:{
+            name:'ali',
+            age:'30',
+            edu:'doc',
+        }
+    }),
+    methods:{}
+
+  });
+
+
+  const vm=app.mount('#app');
+
+</script>
+
+</body>
+</html>

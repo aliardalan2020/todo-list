@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .vue{ background: red;}
+        .react{background: blue;}
+        .text-white{color: white;}
+    </style>
+
+</head>
+<body>
+
+<div id="app">
+    <p>{{ ali }}</p>
+    <p>{{ ali1 }}</p>
+
+
+    <p>
+    <a v-bind:href="url">google</a>
+    </p>
+    <p>
+    <a :href="url">googleddd</a>
+    </p>
+
+<!--    <p :style="styles">-->
+<!--    hellllo-->
+<!--    </p>-->
+
+<!--    <p :class="classes">-->
+<!--        hellllo its for class-->
+<!--    </p>-->
+
+<!--    <p :class="['react', 'text-white']">-->
+<!--        hellllo its for class-->
+<!--    </p>-->
+
+
+<!--    <p :class="[ali4? 'react':'vue', 'text-white']">-->
+<!--        hellllo its for class-->
+<!--    </p>-->
+
+
+<!--    <p :class="{'vue text-white':!ali4}">-->
+<!--        hellllo its for class-->
+<!--    </p>-->
+
+
+<!--    <form>-->
+<!--        <input type="text" value={{ali2}}>&ndash;&gt;-->
+<!--        <input type="text" v-model="ali3.name">-->
+<!--    </form>-->
+
+<!--    <h1>{{ali3.name}}</h1>-->
+</div>
+
+
+<script src="https://unpkg.com/vue@next"></script>
+
+<script>
+    const app = Vue.createApp({
+        data: () => ({
+            // classes:'react text-white',
+            classes:['react', 'text-white'],
+            styles:{backgroundColor:'red',color:'blue'},
+            url:'http://google.com',
+            ali: 'hi ali',
+            ali1: 1,
+            ali2: null,
+            ali3: {
+                name: 'reza'
+            },
+            ali4:false,
+        })
+    });
+
+
+    const vm = app.mount('#app');
+
+
+</script>
+
+</body>
+</html>

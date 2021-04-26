@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+    .vue{ background: red}
+    .react{background: blue}
+    .tw{color: white}
+  </style>
+
+</head>
+<body>
+
+
+<div id="app">
+
+
+<!--  <p class="vue" v-if="isVue">pressed key is</p>-->
+<!--  <p class="react" v-if="!isVue">pressed key value is</p>-->
+<!--  <p class="react" v-else>pressed key value is</p>-->
+
+
+    <p class="vue" v-if="counter===0">pressed key is 1</p>
+    <p class="vue" v-else-if="counter===1">pressed key is 2</p>
+    <p class="react" v-else>pressed key value is 3 </p>
+
+
+
+<!--    این برای مرورگر هزینه کمتری داره ولی از مروگر حذف نمیشه و فقط display:none میشه-->
+    <p class="react" v-show="isVue">pressed key value is 3 </p>
+
+</div>
+
+
+
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+
+  const app=Vue.createApp({
+
+    data: ()=>({
+      counter:2,
+      isVue:false,
+      pressedkey:null,
+      inc_value:0,
+    }),
+    methods:{}
+
+  });
+
+
+  const vm=app.mount('#app');
+
+</script>
+
+</body>
+</html>

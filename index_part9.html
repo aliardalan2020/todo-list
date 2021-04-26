@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+    .vue{ background: red}
+    .react{background: blue}
+    .tw{color: white}
+
+
+  </style>
+
+</head>
+<body>
+
+
+<div id="app">
+
+  <form>
+    <input type="text" v-model="counter" @keydown="onkeydownfunc($event), logEvent($event)">
+    <input type="text" @keydown="onkeydownfunc5(1)">
+  </form>
+
+  <p>pressed key is:{{pressedkey}}</p>
+  <p>pressed key value is:{{inc_value}}</p>
+
+
+</div>
+
+
+
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+
+  const app=Vue.createApp({
+
+    data: ()=>({
+      counter:0,
+      isVue:true,
+      pressedkey:null,
+      inc_value:0,
+    }),
+    methods:{
+      onkeydownfunc(event){
+        this.pressedkey=event.key;
+      },
+
+      onkeydownfunc5(number=1){
+        // this.pressedkey=event.key;
+      this.inc_value+=number;
+      },
+
+      logEvent(event){
+        console.log(event);
+      }
+
+    }
+
+  });
+
+
+  const vm=app.mount('#app');
+
+</script>
+
+</body>
+</html>

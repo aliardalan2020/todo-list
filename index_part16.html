@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+
+    <p>
+       app input: <input type="text" v-model="app">
+    </p>
+
+</div>
+
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+
+    const app = Vue.createApp({
+
+        data: () => ({
+            app:'react native.js'
+        }),
+        methods: {},
+        computed: {},
+        watch: {
+            app(new_value,old_value){
+                console.log('new:',new_value);
+                console.log('old:',old_value);
+            }
+        }
+
+    });
+
+
+    const vm = app.mount('#app');
+
+</script>
+
+</body>
+</html>

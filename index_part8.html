@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+    .vue{ background: red}
+    .react{background: blue}
+    .tw{color: white}
+
+
+  </style>
+
+</head>
+<body>
+
+
+<div id="app">
+
+
+<!--  counter-->
+  <button v-on:click="counter++">
+    increase counter
+  </button>
+
+  <button @click="counter--">
+    decrease counter
+  </button>
+
+  <p>{{counter}}</p>
+  <!--  counter-->
+
+
+
+  <p @mouseover="isVue=true" @mouseleave="isVue=false" :class="[isVue?'vue':'react']">
+    mouse over to change class
+  </p>
+
+
+
+</div>
+
+
+
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+
+  const app=Vue.createApp({
+
+    data: ()=>({
+      counter:0,
+      isVue:true,
+    })
+
+  });
+
+
+  const vm=app.mount('#app');
+
+</script>
+
+</body>
+</html>

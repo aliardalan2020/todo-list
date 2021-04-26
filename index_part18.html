@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="root">
+
+    <button_inc init_value="salam:" :number="10"></button_inc>
+    <button_inc init_value="salam2:" :number="5"></button_inc>
+
+
+</div>
+
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+
+    const app = Vue.createApp({});
+
+
+    app.component('button_inc', {
+        template: `
+          <button
+              @click="count++">{{ init_value }} {{ count }}
+          </button>`,
+        props: ['init_value', 'number'],
+        data() {
+            return {
+                count: this.number
+            }
+        }
+    });
+
+
+    const vm = app.mount('#root');
+
+</script>
+
+</body>
+</html>
