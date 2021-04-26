@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <p>{{ ali }}</p>
+    <p>{{ ali1 }}</p>
+
+    <form>
+        <!--        <input type="text" value={{ali2}}>-->
+        <input type="text" v-model="ali3.name">
+    </form>
+
+    <h1>{{ali3.name}}</h1>
+</div>
+
+
+<script src="https://unpkg.com/vue@next"></script>
+
+<script>
+    const app = Vue.createApp({
+        data: () => ({
+            ali: 'hi ali',
+            ali1: 1,
+            ali2: null,
+            ali3: {
+                name: 'reza'
+            }
+        })
+    });
+
+
+    const vm = app.mount('#app');
+
+
+</script>
+
+</body>
+</html>

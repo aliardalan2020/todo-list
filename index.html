@@ -1,43 +1,66 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
 </head>
 <body>
 
 <div id="app">
-    <p>{{ ali }}</p>
-    <p>{{ ali1 }}</p>
 
-    <form>
-        <!--        <input type="text" value={{ali2}}>-->
-        <input type="text" v-model="ali3.name">
-    </form>
+    <div class="header">
+        <h1>لیست کارها</h1>
+        <input type="text" placeholder="کارها" v-model="input">
+        <button class="addBtn" @click="addToDo">اضافه کردن به لیست</button>
+        <!--        <h1>{{todos}}</h1>-->
+    </div>
 
-    <h1>{{ali3.name}}</h1>
+    <ul>
+        <todo-item v-for="(todo,index) in todos" :key="todo.text" :todo="todo" @todoclick="todo.completed=!todo.completed" @delete-todo="deleteTodo(index)">
+
+        </todo-item>
+    </ul>
+
 </div>
 
 
 <script src="https://unpkg.com/vue@next"></script>
-
 <script>
-    const app = Vue.createApp({
+    const app=Vue.createApp({
         data: () => ({
-            ali: 'hi ali',
-            ali1: 1,
-            ali2: null,
-            ali3: {
-                name: 'reza'
+            input: '',
+            todos:[{text:'first todo',completed:false},{text: 'second todo',completed: false}
+            ],
+        }),
+        methods:{
+            addToDo(){
+                if (this.input.trim()) {
+                    this.todos.push({text:this.input,completed: false});
+                    this.input = '';
+                }
+            },
+            deleteTodo(index){
+                this.todos.splice(index,1);
             }
-        })
+        }
     });
 
 
-    const vm = app.mount('#app');
+    app.component('TodoItem',{
+        template: `<li  :class="{'checked':todo.completed}"  @click="$emit('todoclick')">
+            {{todo.text}}
+            <button class="close" @click="$emit('delete-todo')">X</button>
+        </li>
+        `,
+        props:['todo'],
 
+    })
 
+    app.mount('#app');
 </script>
-
 </body>
 </html>
